@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import MainMov from '../components/main/MainMov.astro';
+import Motto from '../components/main/Motto.astro';
+import Numbers from '../components/main/Numbers.astro';
+---
+<style>
+  #following-circle {
+    position: absolute;
+    width: 1099px;
+    height: 1099px;
+    left: 0;
+    top: 0;
+    will-change: left, top;
+    border-radius: 1099px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 87, 230, 0.44) 0%, rgba(0, 87, 230, 0.00) 100%);
+    z-index: 10;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<script>
+  const circle = document.getElementById('following-circle');
+  document.addEventListener('mousemove', (e) => {
+    console.log(e);
+    //const mouseX = e.clientX;
+    //const mouseY = e.clientY;
+    const mouseX = e.pageX;
+    const mouseY = e.pageY;
+    circle.style.left = mouseX + 'px';
+    circle.style.top = mouseY + 'px';
+  });
+  // TODO: scroll할 때 따라오지 않는 것 처리
+  // 화면 최하단에 갔을 때 circle 때문에 문서가 늘어나는 것 일단 known issue로 둔다.
+</script>
+<Layout title="Lifeworshiper">
+  <Header page="index" />
+  <MainMov />
+  <Motto />
+  <Numbers />
+  <div id="following-circle" aria-hidden="true"></div>
+</Layout>
