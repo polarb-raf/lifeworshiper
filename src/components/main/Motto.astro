@@ -27,13 +27,6 @@
     max-width: 905px;
     margin: 0 auto;
     z-index: 40;
-    transition: transform 0.6s ease-in-out, opacity 0.8s ease-in-out;
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  #fade-in-text.fade-in {
-    transform: translateY(0);
-    opacity: 1;
   }
 
   #text-svg-box {
@@ -139,13 +132,11 @@
 </style>
 <script>
   const sectionEl = document.getElementById('motto-section');
-  const fadeInEl = document.getElementById('fade-in-text');
   const flipEl = document.getElementById('flip-card');
   const slideInEl = document.querySelectorAll('.slide-in-text');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        fadeInEl.classList.add('fade-in');
         flipEl.classList.add('flipping');
         slideInEl.forEach(el => {
           el.classList.add('slide-in');
@@ -155,14 +146,14 @@
 
   }, {
     root: null,
-    threshold: 0.7,
+    threshold: 0.5,
   });
 
   observer.observe(sectionEl);
 
 </script>
 <section id="motto-section">
-    <div id="fade-in-text">
+    <div id="fade-in-text" class="will-fade-in">
       <div id="text-svg-box">
         <div id="flip-box">
           <div id="flip-card">
