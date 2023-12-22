@@ -33,20 +33,153 @@
     font-weight: 800;
     line-height: 150%; /* 66px */
     z-index: 20;
-
+    margin-bottom: 95px;
     p {
       margin: 20px 0 13px;
     }
   }
   #number-panel {
+    display: flex;
+    min-width: 1024px;
     max-width: 1154px;
     width: 100%;
+    height: 554px;
+    gap: 20px;
   }
   .number-card {
+    display: flex;
     background: #252525;
 
+    .number-card-inner {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 224px;
+      .number-text-box {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+      }
+      p {
+        display: none;
+      }
+      span {
+        display: block;
+        width: 100%;
+        text-align: left;
+        color: #29A5FF;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%; /* 28.8px */
+      }
+    }
+
+    &.on {
+      flex-grow: 1;
+      .number-card-inner {
+        width: 100%;
+        p {
+          display: block;
+          width: 100%;
+          color: #FFF;
+          text-align: center;
+          line-height: 150%; /* 189px */
+          font-weight: 200;
+          font-style: normal;
+        }
+        span {
+          padding: 0 65px 45px;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .number-card.collection {
+    .number-card-inner {
+      .number-text-box {
+        width: 259px;
+        height: 297px;
+        background: url('/collection_off.png') no-repeat center center;
+      }
+      span {
+        padding: 0 30px 45px;
+      }
+    }
+    &.on {
+      .number-card-inner {
+        .number-text-box {
+          height: 100%;
+          width: 100%;
+          background: url('/collection_on.png') no-repeat center center;
+        }
+        p {
+          font-size: 126px;
+          letter-spacing: -2.52px;
+        }
+        span {
+          padding: 0 65px 45px;
+        }
+      }
+    }
+  }
+  .number-card.support {
+    .number-card-inner {
+      .number-text-box {
+        width: 146px;
+        height: 110px;
+        background: url('/supporter_off.png') no-repeat center center;
+      }
+      span {
+        text-align: center;
+        padding: 0 0 45px;
+      }
+    }
+    &.on {
+      .number-card-inner {
+        .number-text-box {
+          width: 100%;
+          height: 100%;
+          background: url('/supporter_on.png') no-repeat center center;
+        }
+        span {
+          text-align: left;
+          padding: 0 65px 45px;
+        }
+        p {
+          font-size: 220px;
+          letter-spacing: -4.4px;
+        }
+      }
+    }
   }
 </style>
+<script>
+  function counter($counter, max) {
+    let now = max;
+
+    const handle = setInterval(() => {
+      $counter.innerHTML = new Intl.NumberFormat().format(Math.ceil(max - now));
+
+      // 목표에 도달하면 정지
+      if (now < 1) {
+        clearInterval(handle);
+      }
+
+      // 적용될 수치, 점점 줄어듬
+      const step = now / 5;
+
+      now -= step;
+    }, 50);
+  }
+  const collectionNum = document.getElementById('collection-number');
+  const max = 4372734553;
+
+  collectionNum.addEventListener('click', () => {
+    counter(collectionNum, max);
+  });
+</script>
 <section id="number-section">
   <div id="number-intro" class="will-fade-in">
     <img src="/since_2017.png" alt="2017년 부터">
@@ -55,15 +188,19 @@
   </div>
   <article>
     <div id="number-panel">
-      <div class="number-card">
-        <div>
-          <p>4,372,734,553</p>
+      <div class="number-card collection on">
+        <div class="number-card-inner">
+          <div class="number-text-box">
+            <p id="collection-number">4,372,734,553</p>
+          </div>
           <span>COLLECTION (만 원)</span>
         </div>
       </div>
-      <div class="number-card">
-        <div>
-          <p>190,000</p>
+      <div class="number-card support">
+        <div class="number-card-inner">
+          <div class="number-text-box">
+            <p>190,000</p>
+          </div>
           <span>SUPPORTER (명)</span>
         </div>
       </div>
