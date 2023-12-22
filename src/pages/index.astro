@@ -7,7 +7,7 @@ import Numbers from '../components/main/Numbers.astro';
 ---
 <style>
   #following-circle {
-    position: absolute;
+    position: fixed;
     width: 1099px;
     height: 1099px;
     left: 0;
@@ -22,16 +22,11 @@ import Numbers from '../components/main/Numbers.astro';
 <script>
   const circle = document.getElementById('following-circle');
   document.addEventListener('mousemove', (e) => {
-    //console.log(e);
-    //const mouseX = e.clientX;
-    //const mouseY = e.clientY;
-    const mouseX = e.pageX;
-    const mouseY = e.pageY;
-    circle.style.left = mouseX + 'px';
-    circle.style.top = mouseY + 'px';
+    circle.style.cssText  = `
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+    `;
   });
-  // TODO: scroll할 때 따라오지 않는 것 처리
-  // 화면 최하단에 갔을 때 circle 때문에 문서가 늘어나는 것 일단 known issue로 둔다.
 </script>
 <Layout title="Lifeworshiper">
   <Header page="index" />
