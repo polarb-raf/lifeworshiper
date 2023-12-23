@@ -1,0 +1,129 @@
+---
+
+---
+<style>
+  section {
+    width: 100%;
+    padding: 200px 0 235px;
+    position: relative;
+    background-color: #000;
+  }
+  #bgSlideContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 320px;
+    z-index: 0;
+  }
+  #upperSlideText {
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  #upperSlider {
+    width: 1920px;
+    overflow: visible;
+
+    .swiper-slide {
+      width: 1920px !important;
+      text-align: center;
+    }
+    .swiper-slide img {
+      width: 1920px;
+      height: 190px;
+    }
+  }
+  .swiper-wrapper {
+    transition-timing-function: linear;
+  }
+
+  #lowerSlider {
+    width: 100%;
+    min-width: 1560px;
+    .swiper-slide {
+      width: 100%;
+      min-width: 1560px !important;
+      text-align: center;
+    }
+    .swiper-slide img {
+      width: 1496px;
+    }
+  }
+  #clipContainer {
+    position: relative;
+    z-index: 30;
+    div {
+      width: 946px;
+      height: 659px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, .4);
+    }
+  }
+</style>
+<script>
+  import Swiper from 'swiper/bundle';
+
+  const upperSwiper = new Swiper('#upperSlider', {
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    loopAdditionalSlides:1,
+    speed: 7000,
+    spaceBetween: 30,
+  });
+
+  const lowerSwiper = new Swiper('#lowerSlider', {
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      reverseDirection: true,
+    },
+    spaceBetween: 30,
+    loop: true,
+    loopAdditionalSlides: 1,
+    speed: 7000,
+  });
+
+</script>
+<section>
+  <div id="bgSlideContainer" aria-hidden="true">
+    <div id="upperSlideText">
+      <div id="upperSlider" class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/life_worshiper_text.png" alt="life worshiper">
+          </div>
+          <div class="swiper-slide">
+            <img src="/life_worshiper_text.png" alt="life worshiper">
+          </div>
+          <div class="swiper-slide">
+            <img src="/life_worshiper_text.png" alt="life worshiper">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="lowerSlideText">
+      <div id="lowerSlider" class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/fundraiser_text.png" alt="fundraiser">
+          </div>
+          <div class="swiper-slide">
+            <img src="/fundraiser_text.png" alt="fundraiser">
+          </div>
+          <div class="swiper-slide">
+            <img src="/fundraiser_text.png" alt="fundraiser">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="clipContainer" class="will-fade-in">
+    <div>
+      영상 들어갈 자리
+    </div>
+  </div>
+</section>

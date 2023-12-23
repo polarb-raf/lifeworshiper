@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.0.4"
+    "astro": "^4.0.4",
+    "swiper": "^11.0.5"
   },
   "engines": {
     "node": "20.10.0"
