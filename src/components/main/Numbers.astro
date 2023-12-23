@@ -173,21 +173,35 @@
     }, 50);
   }
 
-  const numberCardElements = document.querySelectorAll('.number-card');
+  const countItemMap = {
+    collection: {
+      cardElement: document.getElementById('collection-number-card'),
+      textElement: document.getElementById('collection-number'),
+      number: 4372734553,
+    },
+    supporter: {
+      cardElement: document.getElementById('supporter-number-card'),
+      textElement: document.getElementById('supporter-number'),
+      number: 190000,
+    }
+  }
+
   const isCountUpNeeded = (entry) => {
     return entry.isIntersecting && entry.target.classList.contains('number-card') && entry.target.classList.contains('on') && !entry.target.classList.contains('count-up-ended');
   };
-  const getNumberCard = (el) => {
-    const targetId = el.classList.contains('collection') ? 'collection-number-card' : 'supporter-number-card';
-    return document.getElementById(targetId);
-  }
 
+  const getNumberItemObj = (el) => {
+    const target = el.classList.contains('collection') ? 'collection' : 'supporter';
+    return countItemMap[target];
+  };
+
+  const numberCardElements = document.querySelectorAll('.number-card');
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (isCountUpNeeded(entry)) {
-        const countUpTarget = entry.target.querySelector('.number-text');
-        countUp(countUpTarget, countUpTarget.dataset.countNumber);
+        const {textElement, number } = getNumberItemObj(entry.target);
+        countUp(textElement, number);
         entry.target.classList.add('count-up-ended');
         observer.unobserve(entry.target);
       }
@@ -199,14 +213,14 @@
   numberCardElements.forEach(target => {
     observer.observe(target);
     target.addEventListener('click', (e) => {
-      const targetNumberCard = getNumberCard(e.currentTarget);
-      if(targetNumberCard.classList.contains('on')) return;
+      const { textElement, number } = getNumberItemObj(e.target);
+      const targetClassList = e.currentTarget.classList;
+      if(targetClassList.contains('on')) return;
       numberCardElements.forEach(el => el.classList.remove('on'));
-      targetNumberCard.classList.add('on');
-      if(!targetNumberCard.classList.contains('count-up-ended')) {
-        const countUpTextEl = targetNumberCard.querySelector('.number-text');
-        countUp(countUpTextEl, countUpTextEl.dataset.countNumber);
-        targetNumberCard.classList.add('count-up-ended');
+      targetClassList.add('on');
+      if(!targetClassList.contains('count-up-ended')) {
+        countUp(textElement, number);
+        targetClassList.add('count-up-ended');
       }
     });
   });
@@ -218,11 +232,11 @@
     <img src="/lifeworshiper_text.png" alt="life worshiper">
   </div>
   <article>
-    <div id="number-panel">
+    <div id="number-panel" class="will-fade-in">
       <div id="collection-number-card" class="number-card collection on">
         <div class="number-card-inner">
           <div class="number-text-box">
-            <p id="collection-number" class="number-text"  data-count-number="4372734553"></p>
+            <p id="collection-number" class="number-text"></p>
           </div>
           <span>COLLECTION (만 원)</span>
         </div>
@@ -230,7 +244,7 @@
       <div id="supporter-number-card" class="number-card supporter">
         <div class="number-card-inner">
           <div class="number-text-box">
-            <p class="number-text" data-count-number="190000"></p>
+            <p id="supporter-number" class="number-text"></p>
           </div>
           <span>SUPPORTER (명)</span>
         </div>
