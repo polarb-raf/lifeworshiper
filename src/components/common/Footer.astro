@@ -1,0 +1,129 @@
+---
+
+---
+<style>
+  footer {
+    position: relative;
+    z-index: 50;
+    background-color: #2C2C2C;
+  }
+  #footerContainer {
+    width: 100%;
+    max-width: 1466px;
+    margin: 0 auto;
+  }
+
+  #logoSns {
+    display: flex;
+  }
+
+  #snsBox {
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .sns-icon {
+    display: flex;
+    width: 117px;
+    height: 117px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #373737;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.10) inset;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.25)) drop-shadow(-1px -1px 4px rgba(255, 255, 255, 0.10));
+
+  }
+  .sns-image {
+    width: 117px;
+    height: 117px;
+    border-radius: 50%;
+  }
+  #etcInfo {
+    width: 100%;
+    max-width: 476px;
+    margin: 0 auto;
+    padding-bottom: 43px;
+  }
+  #etcLink {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    a {
+      color: #858585;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 150%; /* 30px */
+    }
+  }
+  #privacy {
+    text-align: center;
+    margin-bottom: 30px;
+    a {
+      color: #757575;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 150%; /* 24px */
+      text-decoration-line: underline;
+    }
+  }
+  #copyrights {
+    color: #585858;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 150%; /* 18px */
+  }
+</style>
+<footer>
+  <div id="footerContainer">
+    <div id="logoSns">
+      <div>
+        <h2>
+          <img src="/svg_footer_logo.svg" alt="life worshiper 로고. 좌측엔 물방을 모양의 로고가 있고, 우측엔 회사 이름인 라이프 워시퍼가 적혀있고 그 아래에 serve the people save the people이라는 문장이 적혀있다.">
+        </h2>
+      </div>
+      <div id="snsBox">
+        <div class="sns-icon">
+          <a href="https://www.youtube.com/channel/UCERrP7wQFzaRMRlQZoE_jEQ" target="_blank">
+            <img src="/youtube.svg" alt="라이프워시퍼 유튜브 채널 방문">
+          </a>
+        </div>
+        <div class="sns-icon">
+          <a href="https://www.instagram.com/lifeworshiper/" target="_blank">
+            <img src="/insta.svg" alt="라이프워시퍼 인스타그램 방문">
+          </a>
+        </div>
+        <div class="sns-icon">
+          <a href="https://blog.naver.com/lifeworshiper" target="_blank">
+            <img src="/naver.svg" alt="라이프워시퍼 네이버 블로그 방문">
+          </a>
+        </div>
+        <div class="sns-icon">
+          <a href="https://www.facebook.com/lifeworshiperkorea/" target="_blank">
+            <img src="/facebook.svg" alt="라이프워시퍼 페이스북 페이지 방문">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="etcInfo">
+      <div id="etcLink">
+        <a>회사 소개</a>
+        <a>연락처</a>
+        <a>제휴 제안</a>
+      </div>
+      <div id="privacy">
+        <a>개인정보처리방침</a>
+      </div>
+      <p id="copyrights">
+        © 2023 LIFE WORSHIPER INC.<br>
+        7F, 1568, NAMBUSUNHWAN-RO, GWANAK-GU, SEOUL, REPUBLIC OF KOREA.<br>
+        TEL. 02-6928-0314. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </div>
+</footer>
