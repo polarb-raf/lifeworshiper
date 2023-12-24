@@ -3,31 +3,72 @@ const { page } = Astro.props;
 ---
 <style>
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(87, 151, 255, 0.60) 0%, rgba(87, 151, 255, 0.00) 100%);;
+  }
+  #headerContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 36px;
-    padding: 20px 15px;
-    border: 1px solid red;
+    width: 100%;
+    max-width: 1920px;
+    padding: 56px 78px;
+    margin: 0 auto;
+  }
+  #mainLogo {
+  }
+  #navButton {
+    display: flex;
+    a#fundRaiserLink {
+      display: block;
+      padding: 10px 73px;
+      border-radius: 4px;
+      height: 50px;
+      background: #0057E6;
+      color: #FFF;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 30px */
+    }
   }
   nav ul {
     display: flex;
+    margin-right: 80px;
     list-style: none;
-    gap: 30px;
+    gap: 90px;
     .nav-link {
-      font-size: 18px;
+      padding: 10px 0;
+      a {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 150%; /* 30px */
+      }
     }
   }
 </style>
 <header>
-  <h1>logo</h1>
-  <nav>
-    <ul>
-      <li class:list={['nav-link', { on: page === 'fund'}]}>펀드레이저</li>
-      <li class:list={['nav-link', { on: page === 'coop'}]}>협력 기구</li>
-      <li class:list={['nav-link', { on: page === 'media'}]}>미디어</li>
-      <li class:list={['nav-link', { on: page === 'intro'}]}>소개</li>
-      <li class:list={['nav-link', { on: page === 'career'}]}>채용</li>
-    </ul>
-  </nav>
+  <div id="headerContainer">
+    <h1 id="mainLogo">
+      <a href="/">
+        <img src="/header_logo.svg" alt="life worshiper">
+      </a>
+    </h1>
+    <div id="navButton">
+      <nav>
+        <ul>
+          <li class:list={['nav-link', { on: page === 'fund'}]}><a>펀드레이저</a></li>
+          <li class:list={['nav-link', { on: page === 'coop'}]}><a>협력 기구</a></li>
+          <li class:list={['nav-link', { on: page === 'media'}]}><a>미디어</a></li>
+          <li class:list={['nav-link', { on: page === 'intro'}]}><a>소개</a></li>
+          <li class:list={['nav-link', { on: page === 'career'}]}><a>채용</a></li>
+        </ul>
+      </nav>
+      <a id="fundRaiserLink">펀드레이저 이야기</a>
+    </div>
+  </div>
 </header>
