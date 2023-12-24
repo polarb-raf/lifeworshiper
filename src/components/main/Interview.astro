@@ -33,6 +33,7 @@
     height: 800px;
     margin: 0 auto;
     overflow: visible;
+    z-index: 40;
   }
 
   #interviewWrapper {
@@ -43,6 +44,12 @@
     overflow-x: scroll;
     padding-left: calc((100% - 800px) / 2);
     padding-bottom: 170px;
+    -ms-overflow-style: none; /* IE Edge */
+    scrollbar-width: none; /* FF */
+    z-index: 30;
+  }
+  #interviewWrapper::-webkit-scrollbar {
+    display: none; /* chrome, safari, opera */
   }
 
   #interviewCardContainer {
@@ -104,7 +111,7 @@
     });
   }, {
     root: null,
-    threshold: 0.6,
+    threshold: 0.8,
   });
   document.querySelectorAll('.interview-card').forEach(el => observer.observe(el));
 </script>
