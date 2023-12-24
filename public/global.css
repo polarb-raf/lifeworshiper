@@ -96,6 +96,13 @@ meter {
   -webkit-user-drag: element;
 }
 
+@font-face {
+  font-family: 'Helvetica Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/helvetica_condensed_bold.ttf') format('truetype');
+}
+
 html {
   font-family: 'Pretendard Variable', 'Pretendard', 'Noto Sans TC', 'Noto Sans Thai', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif';
 }
